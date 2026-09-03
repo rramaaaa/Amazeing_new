@@ -20,7 +20,7 @@ def Check_Corners(height: int, width: int,
     if exit_column < 0 or exit_column >= width:
         raise ValueError("exit column is outside the maze!")
 
-    if entry_row == exit_row and exit_column == exit_column:
+    if entry_row == exit_row and entry_column == exit_column:
         raise ValueError("entry and exit point can't be the same!")
 
 

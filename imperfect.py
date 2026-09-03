@@ -32,16 +32,13 @@ def remove_walls(
                 continue
 
             walls = []
-            if cell.Row > 0 and cell.Top:
+            if cell.Row > 0 and cell.Top and not grid[cell.Row - 1][cell.Column].Lock:
                 walls.append("Top")
-
-            if cell.Row < rows - 1 and cell.Bottom:
+            if cell.Row < rows - 1 and cell.Bottom and not grid[cell.Row + 1][cell.Column].Lock:
                 walls.append("Bottom")
-
-            if cell.Column > 0 and cell.Left:
+            if cell.Column > 0 and cell.Left and not grid[cell.Row][cell.Column - 1].Lock:
                 walls.append("Left")
-
-            if cell.Column < columns - 1 and cell.Right:
+            if cell.Column < columns - 1 and cell.Right and not grid[cell.Row][cell.Column + 1].Lock:
                 walls.append("Right")
 
             if not walls:

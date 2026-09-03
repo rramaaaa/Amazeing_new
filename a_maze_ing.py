@@ -28,7 +28,7 @@ def call_maze(
         grid = obj.Generate_Maze(grid, perfect, seed)
         if not perfect:
             grid = remove_walls(grid)
-            grid = check_again(grid)
+            #grid = check_again(grid)
         Maze_Printer(grid, rows, columns, entry, ext, colors)
         Output_Maze(grid, config["output_file"], entry, ext)
     else:
@@ -44,7 +44,7 @@ def call_maze(
         grid = FortyTwo_Check(grid, rows, columns)
         if not perfect:
             grid = remove_walls(grid)
-            grid = check_again(grid)
+            #grid = check_again(grid)
         Maze_Printer(grid, rows, columns, entry, ext, colors)
         Output_Maze(grid, config["output_file"], entry, ext)
 
@@ -90,9 +90,9 @@ def menu(input_num: int, config: dict[str, str],
 
         if show_path:
             path, _ = Finding_shortest_path(maze, entry, ext)
-            if not perfect:
+            '''if not perfect:
                 maze = remove_walls(maze)
-                maze = check_again(maze)
+                maze = check_again(maze)'''
             Maze_Printer_withPath(
                 maze,
                 rows, columns,
@@ -101,9 +101,6 @@ def menu(input_num: int, config: dict[str, str],
             Output_Maze(maze, config["output_file"], entry, ext)
 
         else:
-            if not perfect:
-                maze = remove_walls(maze)
-                maze = check_again(maze)
             Maze_Printer(maze, rows, columns, entry, ext, colors)
             Output_Maze(maze, config["output_file"], entry, ext)
 
@@ -130,9 +127,9 @@ def menu(input_num: int, config: dict[str, str],
         colors = random.choice(all_colors)
         if show_path:
             path, _ = Finding_shortest_path(maze, entry, ext)
-            if not perfect:
+            '''if not perfect:
                 maze = remove_walls(maze)
-                maze = check_again(maze)
+                maze = check_again(maze)'''
             Maze_Printer_withPath(maze,
                                   rows, columns,
                                   entry, ext,
@@ -140,9 +137,9 @@ def menu(input_num: int, config: dict[str, str],
             Output_Maze(maze, config["output_file"], entry, ext)
 
         else:
-            if not perfect:
+            '''if not perfect:
                 maze = remove_walls(maze)
-                maze = check_again(maze)
+                maze = check_again(maze)'''
             Maze_Printer(maze, rows, columns, entry, ext, colors)
             Output_Maze(maze, config["output_file"], entry, ext)
 
@@ -268,6 +265,7 @@ def main() -> None:
                               int(exit_row), int(exit_column)
                               )
             grid = obj.Generate_Maze(grid, perfect, seed)
+            grid = FortyTwo_Check(grid, rows, columns)
             if not perfect:
                 grid = remove_walls(grid)
                 grid = check_again(grid)
