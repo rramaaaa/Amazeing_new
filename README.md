@@ -1,0 +1,157 @@
+*This activity has been created as parrt of 42  curriculum by rajarada, sal-qur*
+
+# Description:
+A-Maze-ing is a maze generation and solving project developed as part of the 42 curriculum.
+
+The main goal of this activity is to generate a valid maze from a configuration file, display it according to the required format, and provide a solution from the entrance to the exit.
+
+The project focuses on several important programming concepts:
+
+    Parsing and validating configuration files.
+    Generating mazes algorithmically.
+    Representing and manipulating a two-dimensional grid.
+    Finding a path(PERFECT case) or multiple valid paths(IMPERFECT case) through a maze.
+    Handling errors and invalid configurations.
+    Writing reusable and maintainable code.
+    Working efficiently as a team using version control and project-management tools.
+
+The program takes a configuration file as input. This file contains the dimensions and parameters required to generate the maze. The generated maze must respect the requested constraints, including having an entrance, an exit, and a valid path between them.
+
+# Instructions:
+## Requirements
+This project is implemented in Python.
+To run the project, you need:
+Python3 installed on your system.
+ 
+## Installation
+``` bash 
+git clone git@github.com:42learnersCommon-core---A_maze_ing-03c388b2-db67-4770-9165-47512c4f1064.git
+cd Common-core---A_maze_ing-03c388b2-db67-4770-9165-47512c4f1064
+```
+
+The project has external dependencies we put the a_maze_ing file (that contains the main) in a **mazegen**, to install it:
+you need to make a virtual environment and then :
+- python3 -m venv .env
+- source .env/bin/activate
+- make install
+
+
+# Compiliation
+- Compile the project using:
+
+``` bash
+make
+or
+make run
+or 
+mazegen config.txt (if you had been installed the **mazgen** before)
+```
+- Compile the project and removes object files using:
+
+```bash
+fclean
+```
+
+- Removes object files using:
+``` bash
+clean
+```
+
+- To check the flake8 and srtict mypy:
+``` bash
+make lint-strict
+```
+
+- To check the flake8 and normal mypy with some specific constraints
+``` bash
+make lint
+```
+
+# Congig file
+
+The config file must have 6 Keys(required)
+HEIGHT = the number of rows of the maze,
+WIDTH = the number of columns of the maze,
+
+ENTRY = a user chosen point as a tuple to start entering the maze such as (0,0),
+
+EXIT = a user chosen point as a tuple to exit the maze such as (19,14),
+
+OUTPUT_FILE = a text file that shows the path directions such as SEWN(south, east, weast, north) and a maze walls in hexa-decimal
+
+PERFECT = True(having exactly one path) or PERFECT = False(having more than one path) and SEED = number to make the maze constant(optional).
+
+# Configuration validation
+Before generating the maze, the program checks that:
+
+   - All required parameters are present.
+   - Numeric values are valid.
+   - The maze dimensions are within the allowed limits.
+   - The entrance coordinates are valid.
+   - The exit coordinates are valid.
+   - The configuration does not contain invalid or contradictory values.
+
+Invalid input is handled with an error message rather than allowing the program to continue with incorrect data.
+
+# Algorthims used
+**Depth-First Search with backtracking**
+ The algorithm starts from a cell and explores an unvisited neighboring cell. When moving to a neighboring cell, the wall between the two cells is removed. The algorithm continues until there are no unvisited neighbors, at which point it backtracks to a previous cell and continues exploring from there.
+
+
+## Maze Solving
+
+After generating the maze, the program finds a path from the entrance to the exit.
+
+The solver checks neighboring cells and determines whether movement between them is possible. It keeps track of visited cells to avoid infinite loops and reconstructs the path once the exit is reached.
+
+**Bridth-First Search**
+To find a path from the entrance to the exit.
+
+BFS explores the maze level by level using a queue. Each visited cell stores its previous cell, allowing us to reconstruct the path once the exit is reached.
+
+Because all movements have the same cost, BFS guarantees the shortest path between the entrance and exit.
+
+The resulting path is then displayed using the format required by the project.
+
+
+# Resources
+
+- https://www.geeksforgeeks.org/python/deque-in-python/ (for DEQUE)
+- https://en.wikipedia.org/wiki/Breadth-first_search (for BFS)
+- https://youtu.be/pcKY4hjDrxk?si=FAHMuWTTO02PuoRB (for DFS and BFS)
+- https://en.wikipedia.org/wiki/Depth-first_search (for DFS)
+- https://packaging.python.org/en/latest/guides/writing-pyproject-toml/ (for pyproject.toml )
+
+
+## AI usage
+
+AI had been used only to understand the maze shape and for Algorthims resources suggestions, everything else was done by the team members from scratch to the final maze state.
+
+# Team and Project management
+### Team Roles
+
+We worked as a team and divided the project into different responsibilities. Each team member was responsible for a specific part of the project, allowing us to work in parallel and maintain clear ownership of tasks.
+
+- Maze generation and algorithm implementation by rajarada and sal-qur.
+- Maze solving algorithms and pathfinding by sal-qur.
+- Parsing, validation, and configuration handling by rajarada.
+- Output generation, testing, Makefile, and documentation by rajarada and sal-qur.
+### What Worked Well
+
+- Clear division of responsibilities.
+- Frequent communication between team members.
+- Early integration of individual components.
+- Collaborative debugging and testing.
+
+### What Could Be Improved
+
+- More detailed planning at the beginning of the project.
+- Earlier integration testing to identify compatibility issues sooner.
+- Better documentation of design decisions throughout development.
+
+# LICENSE
+
+This project is released under the MIT License.
+You may use, modify, and distribute this project freely, provided that the original copyright notice and license are included.
+
+See LICENSE.md for the full license text.
