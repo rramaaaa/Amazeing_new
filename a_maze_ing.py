@@ -28,7 +28,7 @@ def call_maze(
         grid = obj.Generate_Maze(grid, perfect, seed)
         if not perfect:
             grid = remove_walls(grid)
-            #grid = check_again(grid)
+            # grid = check_again(grid)
         Maze_Printer(grid, rows, columns, entry, ext, colors)
         Output_Maze(grid, config["output_file"], entry, ext)
     else:
@@ -44,7 +44,7 @@ def call_maze(
         grid = FortyTwo_Check(grid, rows, columns)
         if not perfect:
             grid = remove_walls(grid)
-            #grid = check_again(grid)
+            # grid = check_again(grid)
         Maze_Printer(grid, rows, columns, entry, ext, colors)
         Output_Maze(grid, config["output_file"], entry, ext)
 
