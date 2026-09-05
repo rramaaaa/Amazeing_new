@@ -24,10 +24,6 @@ To run the project, you need:
 Python3 installed on your system.
  
 ## Installation
-``` bash 
-git clone git@github.com:42learnersCommon-core---A_maze_ing-03c388b2-db67-4770-9165-47512c4f1064.git
-cd Common-core---A_maze_ing-03c388b2-db67-4770-9165-47512c4f1064
-```
 
 The project has external dependencies we put the a_maze_ing file (that contains the main) in a **mazegen**, to install it:
 you need to make a virtual environment and then :

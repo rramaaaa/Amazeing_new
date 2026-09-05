@@ -18,6 +18,8 @@ def call_maze(
         small: bool = False
         ) -> list[list[MazeGenerator.Cell]]:
 
+    '''To create maze'''
+
     entry_row, entry_column = entry
     exit_row, exit_column = ext
 
@@ -162,6 +164,7 @@ def menu(input_num: int, config: dict[str, str],
 
 
 def main() -> None:
+    '''to run the program and generate the maze'''
     try:
         file_name = sys.argv[1]
         config = read_config(file_name)
@@ -170,11 +173,22 @@ def main() -> None:
             seed = int(config["seed"])
         else:
             seed = None
+        try:
+            columns = int(config["width"])
+            rows = int(config["height"])
+            try:
+                entry_row, entry_column = config["entry"].split(",")
+                exit_row, exit_column = config["exit"].split(",")
+            except ValueError:
+                raise ValueError(
+                    "Enter a correct format (ENTRY or EXIT)=(value,value)"
+                    )
 
-        columns = int(config["width"])
-        rows = int(config["height"])
-        entry_row, entry_column = config["entry"].split(",")
-        exit_row, exit_column = config["exit"].split(",")
+        except ValueError:
+            raise ValueError("please enter only numbers")
+        if columns < 0 or rows < 0:
+            raise ValueError("Enter only positive values!")
+
         value_perfect = config["perfect"]
         if value_perfect == "true":
             perfect = True

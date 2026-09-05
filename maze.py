@@ -173,7 +173,4 @@ class MazeGenerator:
                         point = self.backward(grid, point, next_direction)
                         moves.pop()
 
-        if perfect:
-            return grid
-
         return grid

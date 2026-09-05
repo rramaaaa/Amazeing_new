@@ -3,6 +3,7 @@ from maze import MazeGenerator
 
 
 def How_Many_walls(cell: MazeGenerator.Cell) -> int:
+    '''Calculate how many closed  walls the parameter cell have'''
     tot = 0
     if cell.Top:
         tot += 1
@@ -80,6 +81,7 @@ def check_again(
         grid: list[list[MazeGenerator.Cell]]
         ) -> list[list[MazeGenerator.Cell]]:
 
+    '''check again that each cell have only 2 or less walls'''
     imperfect = []
     for row in grid:
         for cell in row:
