@@ -173,16 +173,17 @@ def main() -> None:
             seed = int(config["seed"])
         else:
             seed = None
+
+        try:
+            entry_row, entry_column = config["entry"].split(",")
+            exit_row, exit_column = config["exit"].split(",")
+        except ValueError:
+            raise ValueError(
+                "Enter a correct format (ENTRY or EXIT)=(value,value)"
+            )
         try:
             columns = int(config["width"])
             rows = int(config["height"])
-            try:
-                entry_row, entry_column = config["entry"].split(",")
-                exit_row, exit_column = config["exit"].split(",")
-            except ValueError:
-                raise ValueError(
-                    "Enter a correct format (ENTRY or EXIT)=(value,value)"
-                    )
 
         except ValueError:
             raise ValueError("please enter only numbers")
